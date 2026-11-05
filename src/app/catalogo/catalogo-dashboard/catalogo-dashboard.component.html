@@ -1,0 +1,72 @@
+<div class="dashboard">
+  <header class="header">
+    <h1 class="logo">VideoRent</h1>
+    <nav class="nav">
+      <a href="#">Catálogo</a>
+      <a href="#">Alquileres</a>
+      <a href="#">Clientes</a>
+      <a href="#">Reportes</a>
+    </nav>
+  </header>
+
+  <aside class="sidebar">
+    <h2 class="sidebar-title">Géneros</h2>
+    <ul class="genre-list">
+      @for (genero of generos; track genero) {
+        <li><a href="#">{{ genero }}</a></li>
+      }
+    </ul>
+  </aside>
+
+  <main class="content">
+    <section class="toolbar">
+      <h2 class="page-title">Catálogo de películas</h2>
+      <div class="filters">
+        <input type="text" placeholder="Buscar por título" />
+        <select>
+          @for (genero of generos; track genero) {
+            <option>{{ genero }}</option>
+          }
+        </select>
+        <button type="button">Buscar</button>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <span class="stat-value">{{ peliculas().length }}</span>
+        <span class="stat-label">Películas en catálogo</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">3</span>
+        <span class="stat-label">Estrenos del mes</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">27</span>
+        <span class="stat-label">Alquileres activos</span>
+      </div>
+    </section>
+
+    <section class="cards">
+      @for (pelicula of peliculas(); track pelicula.id) {
+        <article class="card">
+          <div class="card-poster">{{ pelicula.titulo.charAt(0) }}</div>
+          <div class="card-body">
+            <h3 class="card-title">{{ pelicula.titulo }}</h3>
+            <p class="card-meta">{{ pelicula.genero }} · {{ pelicula.anio }}</p>
+            <div class="card-tags">
+              @if (pelicula.estreno) { <span class="tag">Estreno</span> }
+              @if (pelicula.subtitulada) { <span class="tag">Subtitulada</span> }
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="button">Ver detalle</button>
+            <button type="button" class="secondary">Alquilar</button>
+          </div>
+        </article>
+      }
+    </section>
+  </main>
+
+  <footer class="footer">© 2026 VideoRent · IF0009 Desarrollo de Software IV</footer>
+</div>
