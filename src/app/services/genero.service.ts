@@ -9,10 +9,8 @@ import { Observable } from 'rxjs';
 })
 
 export class GeneroService {
-    private http = inject(HttpClient); // inyección de HttpClient
+    private http = inject(HttpClient); 
   private url:string = environment.API_URL;
-  // Patrón reactivo para obtener los géneros
-  // HttpClient.get devuelve un Observable, lo que permite suscribirse a los cambios de datos en tiempo real
   generos = this.http.get<Genero[]>(`${this.url}generos`);
 
   constructor() {  }

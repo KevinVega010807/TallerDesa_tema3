@@ -2,7 +2,6 @@
 
 <form [formGroup]="peliculaForm" (ngSubmit)="onSubmit()">
 
-  <!-- Título -->
   <div>
     <label for="titulo">Título:</label>
     <input type="text" id="titulo" formControlName="titulo">
@@ -13,19 +12,16 @@
     }
   </div>
 
-  <!-- Subtitulada -->
   <div>
     <label for="subtitulada">Subtitulada:</label>
     <input type="checkbox" id="subtitulada" formControlName="subtitulada">
   </div>
 
-  <!-- Estreno -->
   <div>
     <label for="estreno">Estreno:</label>
     <input type="checkbox" id="estreno" formControlName="estreno">
   </div>
 
-  <!-- Género -->
   <div>
     <label for="genero">Género:</label>
     <select id="genero" formControlName="genero">
@@ -41,7 +37,6 @@
     }
   </div>
 
-  <!-- Actores Disponibles -->
   <div>
     <h3>Actores</h3>
     <div>
@@ -68,7 +63,6 @@
     </ul>
   </div>
 
-  <!-- Submit Button -->
   <button type="submit" [disabled]="peliculaForm.invalid">Guardar Película</button>
 
 </form>

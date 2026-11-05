@@ -15,8 +15,6 @@ import { GeneroService } from '../../services/genero.service';
 })
 export class PeliculaInsertReactiveComponent implements OnInit {
 
-  // ===== PROPIEDADES =====
-  // Referencia al elemento HTML nativo <select>
   @ViewChild('actorSelect') actorSelectRef!: ElementRef<HTMLSelectElement>;
   peliculaForm!: FormGroup;
   generos: Genero[] = [];
@@ -24,14 +22,12 @@ export class PeliculaInsertReactiveComponent implements OnInit {
   actoresPelicula: Actor[] = [];
   selectedActorId: number | undefined; // ID del actor por agregar (SELECT)
 
-  // ===== CONSTRUCTOR =====
   constructor(
     private fb: FormBuilder,
     private peliculaService: PeliculaService,
     private actorService: ActorService,
     private generoService: GeneroService) { }
 
-  // ===== MÉTODOS =====
   ngOnInit(): void {
     this.peliculaForm = this.fb.group({
       titulo: ['', Validators.required],
@@ -66,7 +62,7 @@ export class PeliculaInsertReactiveComponent implements OnInit {
         error: (error) => console.error('Error saving pelicula:', error) // TODO *
       });
     } else {
-      console.log('Form is invalid'); // TODO *
+      console.log('Form is invalid'); 
     }
   }
 
@@ -77,7 +73,6 @@ export class PeliculaInsertReactiveComponent implements OnInit {
       ({
         actorId: actor.actorId
       }));
-    // retorno del objeto construido directamente
     return {
       titulo: formValue.titulo,
       subtitulada: formValue.subtitulada,
@@ -109,7 +104,6 @@ export class PeliculaInsertReactiveComponent implements OnInit {
   }
 
   onActorSelectionChange(event: Event): void {
-    // Target the select element and get its value
     const selectElement = event.target as HTMLSelectElement;
     this.selectedActorId = parseInt(selectElement.value);
     console.log('Selected ID on change:', this.selectedActorId);
