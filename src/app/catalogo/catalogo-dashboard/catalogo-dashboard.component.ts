@@ -1,4 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { map } from 'rxjs';
 
 interface PeliculaCard {
   id: number;
@@ -17,6 +20,24 @@ interface PeliculaCard {
 })
 export class CatalogoDashboardComponent {
   readonly generos = ['Todos', 'Acción', 'Drama', 'Comedia', 'Ciencia ficción', 'Animación'];
+
+  // El "vigilante" del tamaño de pantalla
+  private readonly breakpointObserver = inject(BreakpointObserver);
+
+  // true si la pantalla mide menos de 768px, false si no
+  readonly esMovil = toSignal(
+    this.breakpointObserver
+      .observe('(max-width: 767.98px)')
+      .pipe(map(estado => estado.matches)),
+    { initialValue: false }
+  );
+
+  // ¿El menú está abierto? Empieza cerrado
+  readonly menuAbierto = signal(false);
+
+  alternarMenu(): void {
+    this.menuAbierto.update(abierto => !abierto);
+  }
 
   readonly peliculas = signal<PeliculaCard[]>([
     { id: 1, titulo: 'Interestelar', genero: 'Ciencia ficción', anio: 2014, estreno: false, subtitulada: true },

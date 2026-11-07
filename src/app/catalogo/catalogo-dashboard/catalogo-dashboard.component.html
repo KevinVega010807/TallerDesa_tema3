@@ -1,6 +1,9 @@
 <div class="dashboard">
   <header class="header">
     <h1 class="logo">VideoRent</h1>
+    @if (esMovil()) {
+    <button type="button" class="menu-btn" (click)="alternarMenu()">☰ Géneros</button>
+    }
     <nav class="nav">
       <a href="#">Catálogo</a>
       <a href="#">Alquileres</a>
@@ -9,11 +12,11 @@
     </nav>
   </header>
 
-  <aside class="sidebar">
+  <aside class="sidebar" [class.oculto]="esMovil() && !menuAbierto()">
     <h2 class="sidebar-title">Géneros</h2>
     <ul class="genre-list">
       @for (genero of generos; track genero) {
-        <li><a href="#">{{ genero }}</a></li>
+      <li><a href="#">{{ genero }}</a></li>
       }
     </ul>
   </aside>
@@ -25,7 +28,7 @@
         <input type="text" placeholder="Buscar por título" />
         <select>
           @for (genero of generos; track genero) {
-            <option>{{ genero }}</option>
+          <option>{{ genero }}</option>
           }
         </select>
         <button type="button">Buscar</button>
@@ -49,21 +52,21 @@
 
     <section class="cards">
       @for (pelicula of peliculas(); track pelicula.id) {
-        <article class="card">
-          <div class="card-poster">{{ pelicula.titulo.charAt(0) }}</div>
-          <div class="card-body">
-            <h3 class="card-title">{{ pelicula.titulo }}</h3>
-            <p class="card-meta">{{ pelicula.genero }} · {{ pelicula.anio }}</p>
-            <div class="card-tags">
-              @if (pelicula.estreno) { <span class="tag">Estreno</span> }
-              @if (pelicula.subtitulada) { <span class="tag">Subtitulada</span> }
-            </div>
+      <article class="card">
+        <div class="card-poster">{{ pelicula.titulo.charAt(0) }}</div>
+        <div class="card-body">
+          <h3 class="card-title">{{ pelicula.titulo }}</h3>
+          <p class="card-meta">{{ pelicula.genero }} · {{ pelicula.anio }}</p>
+          <div class="card-tags">
+            @if (pelicula.estreno) { <span class="tag">Estreno</span> }
+            @if (pelicula.subtitulada) { <span class="tag">Subtitulada</span> }
           </div>
-          <div class="card-footer">
-            <button type="button">Ver detalle</button>
-            <button type="button" class="secondary">Alquilar</button>
-          </div>
-        </article>
+        </div>
+        <div class="card-footer">
+          <button type="button">Ver detalle</button>
+          <button type="button" class="secondary">Alquilar</button>
+        </div>
+      </article>
       }
     </section>
   </main>

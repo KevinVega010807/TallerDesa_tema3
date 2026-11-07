@@ -36,3 +36,84 @@ button { background: #1e3a8a; color: #fff; border: none; border-radius: 4px; cur
 button.secondary { background: #fff; color: #1e3a8a; border: 1px solid #1e3a8a; }
 
 .footer { clear: both; height: 60px; line-height: 60px; text-align: center; background: #111827; color: #fff; font-size: 13px; }
+
+
+/* ===== BASE PROVISIONAL (temporal) =====
+   Hace lo mínimo para que la página no se salga en el celular.
+   BORRAR cuando lleguen los Pasos 1, 2 y 3 de Kevin y Persona 2. */
+.dashboard { width: auto; max-width: 1280px; }
+
+.header { height: auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px; padding: 12px 16px; }
+.logo { float: none; line-height: 1.2; }
+.nav { float: none; line-height: 1.2; display: flex; flex-wrap: wrap; gap: 8px 16px; }
+.nav a { margin-left: 0; }
+
+.sidebar { float: none; width: auto; height: auto; }
+.content { float: none; width: auto; }
+
+.filters { display: flex; flex-wrap: wrap; gap: 12px; }
+.filters input { flex: 1 1 200px; width: auto; }
+.filters select { flex: 1 1 140px; width: auto; margin-left: 0; }
+.filters button { flex: 0 0 auto; margin-left: 0; }
+
+.stat { float: none; width: auto; height: auto; margin: 0 0 16px; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; overflow: visible; }
+.card { float: none; width: auto; height: auto; margin: 0; }
+.card-footer { display: flex; gap: 8px; }
+.card-footer button { flex: 1; width: auto; }
+
+/* ===== PASO 4 (Persona 3) - Mobile-first ===== */
+
+/* 4.1 Estadísticas: celular = 1 columna, tableta y escritorio = 3 columnas */
+.stats { display: grid; grid-template-columns: 1fr; gap: 16px; overflow: visible; }
+.stat { margin: 0; }
+
+@media (min-width: 768px) {
+  .stats { grid-template-columns: repeat(3, 1fr); }
+}
+/* 4.2 Barra lateral: celular = barra superior, tableta/escritorio = columna a la izquierda */
+.sidebar { padding: 12px 16px; }
+.sidebar-title { display: none; }
+.genre-list { display: flex; gap: 8px; overflow-x: auto; }
+.genre-list a { white-space: nowrap; padding: 8px 14px; background: #e5e7eb; border-radius: 999px; }
+
+@media (min-width: 768px) {
+  .dashboard {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-areas:
+      "header  header"
+      "sidebar content"
+      "footer  footer";
+  }
+  .header  { grid-area: header; }
+  .sidebar { grid-area: sidebar; padding: 24px; }
+  .content { grid-area: content; }
+  .footer  { grid-area: footer; }
+
+  .sidebar-title { display: block; }
+  .genre-list { display: block; overflow: visible; }
+  .genre-list a { padding: 10px 12px; background: none; border-radius: 0; }
+}
+
+/* 4.3 Botón de menú: solo existe en celular (lo decide BreakpointObserver) */
+.menu-btn { height: 36px; padding: 0 14px; background: #fff; color: #1e3a8a; font-weight: bold; }
+.sidebar.oculto { display: none; }
+
+/* 4.4 Modo oscuro: si la persona usa modo oscuro en su sistema */
+@media (prefers-color-scheme: dark) {
+  .dashboard { background: #0f172a; color: #e5e7eb; color-scheme: dark; }
+  .sidebar, .stat, .card { background: #1e293b; }
+  .genre-list a { color: #cbd5e1; }
+  .stat-label, .card-meta { color: #94a3b8; }
+  .card-poster { background: #1e40af; color: #dbeafe; }
+  .tag { background: #1e3a8a; color: #dbeafe; }
+  button { background: #2563eb; }
+  button.secondary { background: transparent; color: #93c5fd; border-color: #3b82f6; }
+}
+
+/* En celular, los géneros son botoncitos: también necesitan su color oscuro */
+@media (prefers-color-scheme: dark) and (max-width: 767.98px) {
+  .genre-list a { background: #334155; }
+}
