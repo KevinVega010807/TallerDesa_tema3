@@ -1,2 +1,33 @@
 
 body { margin: 0; }
+/*variables y unidades*/
+:root {
+
+  --color-primario: #1e3a8a;
+  --color-primario-claro: #dbeafe;
+  --color-acento: #93c5fd;
+  --color-texto: #1f2937;
+  --color-texto-suave: #6b7280;
+  --color-fondo: #f3f4f6;
+  --color-superficie: #ffffff;
+  --color-footer: #111827;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.8125rem;
+  --fs-base: 1rem;
+  --fs-lg: clamp(1rem, 0.9rem + 0.4vw, 1.125rem);
+  --fs-xl: clamp(1.375rem, 1rem + 1.5vw, 1.75rem);
+  --fs-xxl: clamp(1.5rem, 1rem + 2.5vw, 2.25rem);
+
+  --header-height: 5rem;
+  --sidebar-width: 15rem;
+  --max-width: 80rem;
+  --radius: 0.5rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
