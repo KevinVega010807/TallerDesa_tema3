@@ -1,15 +1,18 @@
 /* ESTADO INICIAL (paso-0): todo en px, anchos fijos y floats. Se rompe en móvil. */
 .dashboard { width: 1280px; margin: 0 auto; font-family: Arial, sans-serif; font-size: 14px; color: #1f2937; background: #f3f4f6; }
 
+
 .header { height: 80px; background: #1e3a8a; color: #fff; padding: 0 24px; }
 .logo { float: left; font-size: 28px; line-height: 80px; margin: 0; }
 .nav { float: right; line-height: 80px; }
 .nav a { color: #fff; margin-left: 24px; text-decoration: none; font-size: 16px; }
 
+
 .sidebar { float: left; width: 240px; height: 900px; background: #fff; padding: 24px; box-sizing: border-box; }
 .sidebar-title { font-size: 18px; margin: 0 0 16px; }
 .genre-list { list-style: none; padding: 0; margin: 0; }
 .genre-list a { display: block; padding: 10px 12px; color: #374151; text-decoration: none; font-size: 15px; }
+
 
 .content { float: left; width: 1040px; padding: 24px; box-sizing: border-box; }
 .page-title { font-size: 26px; margin: 0 0 16px; }
@@ -17,10 +20,12 @@
 .filters select { width: 200px; height: 40px; margin-left: 12px; font-size: 14px; }
 .filters button { width: 120px; height: 40px; margin-left: 12px; }
 
+
 .stats { margin: 24px 0; overflow: hidden; }
 .stat { float: left; width: 310px; height: 90px; margin-right: 16px; background: #fff; padding: 16px; box-sizing: border-box; }
 .stat-value { display: block; font-size: 28px; font-weight: bold; }
 .stat-label { font-size: 13px; color: #6b7280; }
+
 
 .cards { overflow: hidden; }
 .card { float: left; width: 310px; height: 360px; margin: 0 16px 16px 0; background: #fff; }
@@ -32,10 +37,186 @@
 .card-footer { padding: 0 16px 16px; }
 .card-footer button { width: 130px; height: 36px; }
 
+
 button { background: #1e3a8a; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
 button.secondary { background: #fff; color: #1e3a8a; border: 1px solid #1e3a8a; }
 
+
 .footer { clear: both; height: 60px; line-height: 60px; text-align: center; background: #111827; color: #fff; font-size: 13px; }
+
+
+
+/*variables y unidades relativas*/
+/*  Contenedor */
+.dashboard {
+  width: 100%;                          
+  max-width: var(--max-width);         
+  font-size: var(--fs-base);           
+  color: var(--color-texto);          
+  background: var(--color-fondo);      
+}
+
+/* Header */
+.header {
+  height: var(--header-height);         
+  padding: 0 var(--space-lg);          
+  background: var(--color-primario);   
+}
+
+.logo {
+  font-size: var(--fs-xxl);             
+  line-height: var(--header-height);   
+}
+
+.nav {
+  line-height: var(--header-height);    
+}
+
+.nav a {
+  font-size: var(--fs-base);            
+  margin-left: var(--space-lg);        
+}
+
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-width);         
+  height: auto;                         
+  padding: var(--space-lg);           
+  background: var(--color-superficie);  
+  border-radius: var(--radius);         
+}
+
+.sidebar-title {
+  font-size: var(--fs-lg);             
+  margin: 0 0 var(--space-md);          
+}
+
+.genre-list a {
+  font-size: var(--fs-base);          
+  padding: 0.625rem 0.75rem;           
+}
+
+/*Contenido */
+.content {
+  width: calc(100% - var(--sidebar-width));         
+  min-height: calc(100dvh - var(--header-height));  
+  padding: var(--space-lg);                         
+}
+
+.page-title {
+  font-size: var(--fs-xl);            
+  margin: 0 0 var(--space-md);          
+}
+
+/*  Filtros */
+.filters input {
+  width: min(100%, 25rem);             
+  height: 2.5rem;                      
+  font-size: var(--fs-base);          
+}
+
+.filters select {
+  width: min(100%, 12.5rem);         
+  height: 2.5rem;                    
+  margin-left: 0.75rem;               
+  font-size: var(--fs-base);        
+}
+
+.filters button {
+  width: auto;                         
+  min-width: 7.5rem;                   
+  height: 2.5rem;                     
+  margin-left: 0.75rem;                
+}
+
+/* Estadísticas*/
+.stats {
+  margin: var(--space-lg) 0;        
+}
+
+.stat {
+  width: calc((100% - 2 * var(--space-md)) / 3);  
+  height: auto;                         
+  min-height: 5.625rem;                
+  padding: var(--space-md);            
+  background: var(--color-superficie);  
+  border-radius: var(--radius);         
+}
+
+.stat:last-child {
+  margin-right: 0;                     
+}
+
+.stat-value {
+  font-size: var(--fs-xl);              
+}
+
+.stat-label {
+  font-size: var(--fs-sm);          
+  color: var(--color-texto-suave);    
+}
+
+/* Tarjetas  */
+.card {
+  height: auto;                     
+  min-height: 22.5rem;                 
+  margin: 0 var(--space-md) var(--space-md) 0;  
+  background: var(--color-superficie);  
+  border-radius: var(--radius);        
+  overflow: hidden;                     
+}
+
+.card-poster {
+  height: 11.25rem;                    
+  line-height: 11.25rem;             
+  font-size: 4rem;                    
+  background: var(--color-acento);     
+  color: var(--color-primario);        
+}
+
+.card-body {
+  padding: var(--space-md);            
+}
+
+.card-title {
+  font-size: var(--fs-lg);             
+}
+
+.card-meta {
+  font-size: var(--fs-sm);            
+  color: var(--color-texto-suave);     
+}
+
+.tag {
+  font-size: var(--fs-xs);            
+  padding: var(--space-xs) var(--space-sm);      
+  background: var(--color-primario-claro);       
+  color: var(--color-primario);                  
+}
+
+.card-footer {
+  padding: 0 var(--space-md) var(--space-md);     
+}
+
+/* Botones */
+button {
+  font-size: var(--fs-sm);             
+  background: var(--color-primario);    
+}
+
+button.secondary {
+  background: var(--color-superficie);  
+  color: var(--color-primario);       
+  border-color: var(--color-primario); 
+}
+
+/* Footer */
+.footer {
+  height: 3.75rem;                    
+  line-height: 3.75rem;                 
+  font-size: var(--fs-sm);            
+  background: var(--color-footer);    
+}
 
 
 /* ===== BASE PROVISIONAL (temporal) =====
@@ -43,25 +224,31 @@ button.secondary { background: #fff; color: #1e3a8a; border: 1px solid #1e3a8a; 
    BORRAR cuando lleguen los Pasos 1, 2 y 3 de Kevin y Persona 2. */
 .dashboard { width: auto; max-width: 1280px; }
 
+
 .header { height: auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px; padding: 12px 16px; }
 .logo { float: none; line-height: 1.2; }
 .nav { float: none; line-height: 1.2; display: flex; flex-wrap: wrap; gap: 8px 16px; }
 .nav a { margin-left: 0; }
 
+
 .sidebar { float: none; width: auto; height: auto; }
 .content { float: none; width: auto; }
+
 
 .filters { display: flex; flex-wrap: wrap; gap: 12px; }
 .filters input { flex: 1 1 200px; width: auto; }
 .filters select { flex: 1 1 140px; width: auto; margin-left: 0; }
 .filters button { flex: 0 0 auto; margin-left: 0; }
 
+
 .stat { float: none; width: auto; height: auto; margin: 0 0 16px; }
+
 
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; overflow: visible; }
 .card { float: none; width: auto; height: auto; margin: 0; }
 .card-footer { display: flex; gap: 8px; }
 .card-footer button { flex: 1; width: auto; }
+
 
 /* ===== PASO 4 (Persona 3) - Mobile-first ===== */
 
@@ -69,14 +256,17 @@ button.secondary { background: #fff; color: #1e3a8a; border: 1px solid #1e3a8a; 
 .stats { display: grid; grid-template-columns: 1fr; gap: 16px; overflow: visible; }
 .stat { margin: 0; }
 
+
 @media (min-width: 768px) {
   .stats { grid-template-columns: repeat(3, 1fr); }
 }
+
 /* 4.2 Barra lateral: celular = barra superior, tableta/escritorio = columna a la izquierda */
 .sidebar { padding: 12px 16px; }
 .sidebar-title { display: none; }
 .genre-list { display: flex; gap: 8px; overflow-x: auto; }
 .genre-list a { white-space: nowrap; padding: 8px 14px; background: #e5e7eb; border-radius: 999px; }
+
 
 @media (min-width: 768px) {
   .dashboard {
@@ -97,9 +287,11 @@ button.secondary { background: #fff; color: #1e3a8a; border: 1px solid #1e3a8a; 
   .genre-list a { padding: 10px 12px; background: none; border-radius: 0; }
 }
 
+
 /* 4.3 Botón de menú: solo existe en celular (lo decide BreakpointObserver) */
 .menu-btn { height: 36px; padding: 0 14px; background: #fff; color: #1e3a8a; font-weight: bold; }
 .sidebar.oculto { display: none; }
+
 
 /* 4.4 Modo oscuro: si la persona usa modo oscuro en su sistema */
 @media (prefers-color-scheme: dark) {
@@ -112,6 +304,7 @@ button.secondary { background: #fff; color: #1e3a8a; border: 1px solid #1e3a8a; 
   button { background: #2563eb; }
   button.secondary { background: transparent; color: #93c5fd; border-color: #3b82f6; }
 }
+
 
 /* En celular, los géneros son botoncitos: también necesitan su color oscuro */
 @media (prefers-color-scheme: dark) and (max-width: 767.98px) {
