@@ -1,0 +1,60 @@
+Paso 1:
+
+Tener angular/cdk
+npx ng add @angular/cdk
+
+Paso 2:
+ Las tres cajas de estadísticas van en una columna en el celular y
+ en tres columnas desde 768 px de ancho.
+
+En catalogo-dashboard.component.css poner :
+
+catalogo-dashboard.component.css.
+/* ===== PASO 4 (Persona 3) - Mobile-first ===== */
+
+/* 4.1 Estadísticas: celular = 1 columna, tableta y escritorio = 3 columnas */
+.stats { display: grid; grid-template-columns: 1fr; gap: 16px; overflow: visible; }
+.stat { margin: 0; }
+
+@media (min-width: 768px) {
+  .stats { grid-template-columns: repeat(3, 1fr); }
+}
+
+Qué hace cada parte
+• display: grid: convierte el contenedor .stats en una cuadrícula, con columnas y filas.
+• grid-template-columns: 1fr: una sola columna. fr significa «una parte del espacio libre».
+• gap: 16px: espacio de 16 px entre las cajas; por eso .stat queda con margin: 0.
+• overflow: visible: anula el overflow: hidden original, que servía para los floats.
+• @media (min-width: 768px): «solo si la pantalla mide 768 px o más».
+• repeat(3, 1fr): tres columnas iguales.
+
+Paso 3 :
+
+En el celular los géneros son una fila de botones arriba del contenido; desde 768 px son una columna fija a la izquierda.
+
+En catalogo-dashboard.component.css poner :
+
+/* 4.2 Barra lateral: celular = barra superior, tableta y escritorio = columna a la izquierda */
+.sidebar { padding: 12px 16px; }
+.sidebar-title { display: none; }
+.genre-list { display: flex; gap: 8px; overflow-x: auto; }
+.genre-list a { white-space: nowrap; padding: 8px 14px; background: #e5e7eb; border-radius: 999px; }
+
+@media (min-width: 768px) {
+  .dashboard {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-areas:
+      "header  header"
+      "sidebar content"
+      "footer  footer";
+  }
+  .header  { grid-area: header; }
+  .sidebar { grid-area: sidebar; padding: 24px; }
+  .content { grid-area: content; }
+  .footer  { grid-area: footer; }
+
+  .sidebar-title { display: block; }
+  .genre-list { display: block; overflow: visible; }
+  .genre-list a { padding: 10px 12px; background: none; border-radius: 0; }
+}
