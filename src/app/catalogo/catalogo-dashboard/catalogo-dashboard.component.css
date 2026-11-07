@@ -96,3 +96,7 @@ button.secondary { background: #fff; color: #1e3a8a; border: 1px solid #1e3a8a; 
   .genre-list { display: block; overflow: visible; }
   .genre-list a { padding: 10px 12px; background: none; border-radius: 0; }
 }
+
+/* 4.3 Botón de menú: solo existe en celular (lo decide BreakpointObserver) */
+.menu-btn { height: 36px; padding: 0 14px; background: #fff; color: #1e3a8a; font-weight: bold; }
+.sidebar.oculto { display: none; }
