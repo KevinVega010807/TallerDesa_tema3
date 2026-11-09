@@ -50,7 +50,7 @@ button.secondary { background: #fff; color: #1e3a8a; border: 1px solid #1e3a8a; 
 /*  Contenedor */
 .dashboard {
   width: 100%;                          
-  max-width: var(--max-width);         
+  max-width: none;       
   font-size: var(--fs-base);           
   color: var(--color-texto);          
   background: var(--color-fondo);      
@@ -224,7 +224,7 @@ button.secondary {
 /* paso 2 estructura macro grid layout */
 .dashboard {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto auto 1fr auto;
   grid-template-areas:
     "header"
@@ -365,7 +365,7 @@ button.secondary {
 
 @media (min-width: 768px) {
   .dashboard {
-    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
     grid-template-rows: var(--header-height) 1fr auto;
     grid-template-areas:
       "header  header"
@@ -383,6 +383,16 @@ button.secondary {
 /* 4.3 Botón de menú: solo existe en celular (lo decide BreakpointObserver) */
 .menu-btn { height: 2.25rem; padding: 0 0.875rem;; background: #fff; color: #1e3a8a; font-weight: bold; }
 .sidebar.oculto { display: none; }
+
+/* 4.5 Header: celular = logo y botón arriba, nav abajo */
+.header { height: auto; min-height: var(--header-height); flex-wrap: wrap; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); }
+.nav { width: 100%; overflow-x: auto; gap: var(--space-md); }
+.nav a { white-space: nowrap; }
+
+@media (min-width: 768px) {
+  .header { height: var(--header-height); flex-wrap: nowrap; padding: 0 var(--space-lg); }
+  .nav { width: auto; overflow-x: visible; gap: var(--space-lg); }
+}
 
 
 /* 4.4 Modo oscuro: si la persona usa modo oscuro en su sistema */
