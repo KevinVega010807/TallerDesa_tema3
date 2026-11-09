@@ -218,14 +218,7 @@ button.secondary {
   background: var(--color-footer);    
 }
 
-
-/* ===== BASE PROVISIONAL (temporal) =====
-   Hace lo mínimo para que la página no se salga en el celular.
-   BORRAR cuando lleguen los Pasos 1, 2 y 3 de Kevin y Persona 2. */
-
-
-/* =======(PASO 2 Y PASO 3 - PERSONA 2) */
-
+/* =======(PASO 2 Y PASO 3 jeff) */
 /* paso 2 estructura macro grid layout */
 .dashboard {
   display: grid;
@@ -348,10 +341,11 @@ button.secondary {
   width: auto;
 }
 /* ==========================================================================
-   FIN PASO 2 Y PASO 3 (PERSONA 2)
+   FIN PASO 2 Y PASO 3
    ========================================================================== */
 
-/* ===== PASO 4 (Persona 3) - Mobile-first ===== */
+
+/* ===== PASO 4 (luis) - Mobile-first ===== */
 
 /* 4.1 Estadísticas: celular = 1 columna, tableta y escritorio = 3 columnas */
 .stats { display: grid; grid-template-columns: 1fr; gap: 16px; overflow: visible; }
