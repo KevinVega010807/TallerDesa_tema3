@@ -218,17 +218,20 @@ button.secondary {
   background: var(--color-footer);    
 }
 
+
 /* =======(PASO 2 Y PASO 3 jeff) */
+
 /* paso 2 estructura macro grid layout */
 .dashboard {
   display: grid;
-  grid-template-columns: var(--sidebar-width) 1fr;
-  grid-template-rows: var(--header-height) 1fr auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr auto;
   grid-template-areas:
-    "header  header"
-    "sidebar content"
-    "footer  footer";
-  min-height: 100vh;
+    "header"
+    "sidebar"
+    "content"
+    "footer";
+  min-height: 100dvh;
 }
 
 .header {
@@ -237,10 +240,14 @@ button.secondary {
 
 .sidebar {
   grid-area: sidebar;
+  float: none;
+  width: auto;
 }
 
 .content {
   grid-area: content;
+  float: none;
+  width: auto;
 }
 
 .footer {
@@ -249,7 +256,7 @@ button.secondary {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
   gap: var(--space-md);
   overflow: visible;
 }
@@ -340,51 +347,41 @@ button.secondary {
   flex: 1;
   width: auto;
 }
-/* ==========================================================================
-   FIN PASO 2 Y PASO 3
-   ========================================================================== */
-
-
-/* ===== PASO 4 (luis) - Mobile-first ===== */
+/* ===== PASO 4 (Persona 3) - Mobile-first ===== */
 
 /* 4.1 Estadísticas: celular = 1 columna, tableta y escritorio = 3 columnas */
-.stats { display: grid; grid-template-columns: 1fr; gap: 16px; overflow: visible; }
-.stat { margin: 0; }
-
+.stats { display: grid; grid-template-columns: 1fr; gap: var(--space-md); overflow: visible; }
+.stat { float: none; width: auto; margin: 0; }
 
 @media (min-width: 768px) {
   .stats { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* 4.2 Barra lateral: celular = barra superior, tableta/escritorio = columna a la izquierda */
-.sidebar { padding: 12px 16px; }
+.sidebar { padding: 0.75rem var(--space-md); }
 .sidebar-title { display: none; }
-.genre-list { display: flex; gap: 8px; overflow-x: auto; }
-.genre-list a { white-space: nowrap; padding: 8px 14px; background: #e5e7eb; border-radius: 999px; }
-
+.genre-list { display: flex; gap: var(--space-sm); overflow-x: auto; }
+.genre-list a { white-space: nowrap; padding: var(--space-sm) 0.875rem; background: #e5e7eb; border-radius: 999px; }
 
 @media (min-width: 768px) {
   .dashboard {
-    display: grid;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-rows: var(--header-height) 1fr auto;
     grid-template-areas:
       "header  header"
       "sidebar content"
       "footer  footer";
   }
-  .header  { grid-area: header; }
-  .sidebar { grid-area: sidebar; padding: 24px; }
-  .content { grid-area: content; }
-  .footer  { grid-area: footer; }
-
+  .sidebar { padding: var(--space-lg); }
+  .sidebar.oculto { display: block; }
   .sidebar-title { display: block; }
   .genre-list { display: block; overflow: visible; }
-  .genre-list a { padding: 10px 12px; background: none; border-radius: 0; }
+  .genre-list a { padding: 0.625rem 0.75rem; background: none; border-radius: 0; }
 }
 
 
 /* 4.3 Botón de menú: solo existe en celular (lo decide BreakpointObserver) */
-.menu-btn { height: 36px; padding: 0 14px; background: #fff; color: #1e3a8a; font-weight: bold; }
+.menu-btn { height: 2.25rem; padding: 0 0.875rem;; background: #fff; color: #1e3a8a; font-weight: bold; }
 .sidebar.oculto { display: none; }
 
 
